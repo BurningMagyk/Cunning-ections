@@ -15,6 +15,11 @@ public class Tile : MonoBehaviour
     [SerializeField]
     bool becomesBridge, isTree;
 
+    private void Start()
+    {
+        island.AddTile(this);
+    }
+
     public void BecomeBridge()
     {
         if (becomesBridge) tileType = Type.WOOD;

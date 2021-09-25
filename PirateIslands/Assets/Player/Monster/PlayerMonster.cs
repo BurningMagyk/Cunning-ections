@@ -12,6 +12,8 @@ public class PlayerMonster : GenericPlayerInterface
     Vector3 upMove = new Vector3(0, 1, 0);
     Vector3 desiredDirection = new Vector3();
 
+    private Island currentIsland;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,10 @@ public class PlayerMonster : GenericPlayerInterface
         GetComponent<Transform>().localPosition += desiredDirection;
     }
 
+    private bool CanMove(Vector3 newPos)
+    {
+        return false;
+    }
     
     // used for the camera
     public override Vector3 GetSpeed(){
