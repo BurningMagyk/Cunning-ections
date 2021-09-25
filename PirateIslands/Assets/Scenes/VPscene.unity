@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 1118558109}
   CamOffset: {x: 0, y: 0, z: -10}
+  leadDistance: 0
 --- !u!1 &79966987
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 699284123}
   CamOffset: {x: 0, y: 0, z: -10}
+  leadDistance: 8.28
 --- !u!20 &79966990
 Camera:
   m_ObjectHideFlags: 0
