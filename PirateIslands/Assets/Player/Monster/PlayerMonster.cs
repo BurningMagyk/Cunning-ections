@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMonster : MonoBehaviour
+public class PlayerMonster : GenericPlayerInterface
 {
     [Range(5.0f,20.0f)]
     public float playerSpeed = 10.0f;
@@ -34,7 +34,7 @@ public class PlayerMonster : MonoBehaviour
 
     
     // used for the camera
-    Vector3 GetSpeed(){
+    public override Vector3 GetSpeed(){
         return desiredDirection;
     }
 }
