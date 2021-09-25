@@ -36,7 +36,7 @@ public class PlayerMonster : GenericPlayerInterface
 
     private bool CanMove(Vector3 newPos)
     {
-        return false;
+        return currentIsland.CanMove(this);
     }
     
     // used for the camera

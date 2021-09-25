@@ -14,9 +14,23 @@ public class Island : MonoBehaviour
     {
         foreach (Tile tile in tiles)
         {
-            //if (player)
+            if (tile.IsInside(player))
+            {
+                if (!tile.CanMoveHere(player)) return false;
+            }
         }
-        return false;
+        return true;
+    }
+    public bool CanMove(PlayerPirateScript player)
+    {
+        foreach (Tile tile in tiles)
+        {
+            if (tile.IsInside(player))
+            {
+                if (!tile.CanMoveHere(player)) return false;
+            }
+        }
+        return true;
     }
 
     // Start is called before the first frame update

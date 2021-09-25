@@ -11,6 +11,8 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     float speedMultiplier = 0.005f;
 
+    private Island currentIsland;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,5 +40,10 @@ public class PlayerPirateScript : GenericPlayerInterface
         desiredDirection += (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) * upMove;
         desiredDirection = desiredDirection.normalized;
         return desiredDirection;
+    }
+
+    private bool CanMove(Vector3 newPos)
+    {
+        return currentIsland.CanMove(this);
     }
 }
