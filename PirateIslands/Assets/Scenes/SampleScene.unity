@@ -910,7 +910,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5147003487626373744, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: PlayerPirate
       objectReference: {fileID: 0}
     - target: {fileID: 5147003487626373747, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_RootOrder
