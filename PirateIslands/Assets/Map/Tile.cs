@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour
     private Type tileType;
 
     [SerializeField]
-    bool becomesBridge, isTree;
+    bool becomesBridge, isTree, isDock;
 
     float left, right, up, down;
 

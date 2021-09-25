@@ -10,7 +10,8 @@ public class Island : MonoBehaviour
     {
         tiles.Add(tile);
     }
-    public bool CanMove(GenericPlayerInterface player, Vector3 newPos, Vector3 lossyScale)
+    public bool CanMove(GenericPlayerInterface player,
+        Vector3 newPos, Vector3 lossyScale)
     {
         foreach (Tile tile in tiles)
         {
@@ -33,4 +34,6 @@ public class Island : MonoBehaviour
     {
         
     }
+
+    public static List<Island> islands;
 }

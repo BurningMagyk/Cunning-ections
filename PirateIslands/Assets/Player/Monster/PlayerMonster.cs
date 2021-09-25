@@ -12,12 +12,13 @@ public class PlayerMonster : GenericPlayerInterface
     Vector3 upMove = new Vector3(0, 1, 0);
     Vector3 desiredDirection = new Vector3();
 
+    private Vector3 lossyScale;
     private Island currentIsland;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        lossyScale = GetComponent<Transform>().lossyScale;
     }
 
 

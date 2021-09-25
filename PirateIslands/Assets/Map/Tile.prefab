@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c0ee4d1c0bd714bb02f7556c28e3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  island: {fileID: 0}
   tileType: 0
   becomesBridge: 0
   isTree: 0
+  isDock: 0
 --- !u!212 &695754401898268063
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     [SerializeField]
     private Island currentIsland;
+    [SerializeField]
+    private Bridge currentBridge;
 
     // Start is called before the first frame update
     void Start()
