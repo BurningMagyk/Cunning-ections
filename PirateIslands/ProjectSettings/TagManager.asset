@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Island
   - Bridge
+  - Tree
   layers:
   - Default
   - TransparentFX

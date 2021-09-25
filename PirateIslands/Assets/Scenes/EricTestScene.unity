@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 6557450797572501708, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
+      propertyPath: island
+      value: 
+      objectReference: {fileID: 1533905070}
     - target: {fileID: 8420027136394513543, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -968,6 +972,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2052345560909397117, guid: 6d4f6215091ac2c42868756aa91ccef4, type: 3}
       propertyPath: m_Name
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052345560909397117, guid: 6d4f6215091ac2c42868756aa91ccef4, type: 3}
+      propertyPath: m_TagString
       value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 2052345560909397118, guid: 6d4f6215091ac2c42868756aa91ccef4, type: 3}

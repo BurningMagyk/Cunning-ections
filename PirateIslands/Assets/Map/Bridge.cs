@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
+    List<Tile> tiles = new List<Tile>();
+
+    public void AddTile(Tile tile)
+    {
+        tiles.Add(tile);
+    }
+    public bool CanMove(GenericPlayerInterface player,
+        Vector3 newPos, Vector3 lossyScale)
+    {
+        foreach (Tile tile in tiles)
+        {
+            if (tile.IsInside(newPos, lossyScale))
+            {
+                if (!tile.CanMoveHere(player)) return false;
+            }
+        }
+        return true;
+    }
     float left, right, up, down;
     public bool IsInside(Vector3 newPos, Vector3 lossyScale)
     {

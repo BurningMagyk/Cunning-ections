@@ -8,7 +8,7 @@ public class Tree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                if (All == null)
+        if (All == null)
         {
             GameObject[] objs =  GameObject.FindGameObjectsWithTag("Tree");
             All = new Tree[objs.Length];
