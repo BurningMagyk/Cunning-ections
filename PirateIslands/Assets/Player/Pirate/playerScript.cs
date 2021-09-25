@@ -27,4 +27,9 @@ public class playerScript : MonoBehaviour
 
         GetComponent<Transform>().localPosition += desiredDirection * 0.005f;
     }
+    
+    // used for the camera
+    Vector3 GetSpeed(){
+        return desiredDirection;
+    }
 }
