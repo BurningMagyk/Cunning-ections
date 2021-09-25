@@ -5,13 +5,26 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public GenericPlayerInterface targetObject;
-    public Vector3 CamOffset = new Vector3(0,0,-1000000);
+    public GameObject targetObject;
+    public Vector3 CamOffset = new Vector3(0,0,-100);
+    [Range(5.0f,20.0f)]
+    public float leadDistance;
+    Vector3 camSlerp = new Vector3();
+    
+    Vector3 PreviousPosition = new Vector3();
+
+    void Start() {
+        PreviousPosition = targetObject.transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        CamOffset = new Vector3(0,0,-1000000) + targetObject.GetSpeed();
-        gameObject.transform.position = targetObject.transform.position + CamOffset;
+        Vector3 transformDiff = targetObject.transform.position - PreviousPosition;
+        camSlerp += (transformDiff * leadDistance - camSlerp) * 0.1f;
+        
+        gameObject.transform.position = targetObject.transform.position + camSlerp + CamOffset;
+
+        PreviousPosition = targetObject.transform.position;
     }
 }
