@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public GameObject targetObject;
+    public GenericPlayerInterface targetObject;
     public Vector3 CamOffset = new Vector3(0,0,-1000000);
 
     // Update is called once per frame
