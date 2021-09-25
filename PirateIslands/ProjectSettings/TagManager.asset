@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Water
+    uniqueID: 3781715479
+    locked: 0
+  - name: Island
+    uniqueID: 3095741625
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
