@@ -16,7 +16,7 @@ public class PlayerPirateScript : GenericPlayerInterface
     // Start is called before the first frame update
     void Start()
     {
-        
+   
     }
 
     // Update is called once per frame
@@ -34,10 +34,10 @@ public class PlayerPirateScript : GenericPlayerInterface
     Vector3 GetDesiredDirection()
     {
         Vector3 desiredDirection = new Vector3();
-        desiredDirection += (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) * rightMove;
-        desiredDirection += (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0) * leftMove;
-        desiredDirection += (Input.GetKey(KeyCode.DownArrow) ? 1 : 0) * downMove;
-        desiredDirection += (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) * upMove;
+        desiredDirection += (Input.GetKey(KeyCode.D) ? 1 : 0) * rightMove;
+        desiredDirection += (Input.GetKey(KeyCode.A) ? 1 : 0) * leftMove;
+        desiredDirection += (Input.GetKey(KeyCode.S) ? 1 : 0) * downMove;
+        desiredDirection += (Input.GetKey(KeyCode.W) ? 1 : 0) * upMove;
         desiredDirection = desiredDirection.normalized;
         return desiredDirection;
     }
