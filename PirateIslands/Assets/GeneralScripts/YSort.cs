@@ -13,8 +13,7 @@ public class YSort : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = GetComponent<Transform>().localPosition;
-        pos.z = -pos.y;
-        GetComponent<Transform>().localPosition = pos;
+        Vector3 pos = GetComponent<Transform>().position;
+        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-pos.y * 1000);
     }
 }
