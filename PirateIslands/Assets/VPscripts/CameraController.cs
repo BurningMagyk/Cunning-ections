@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public GameObject targetObject;
+    public Vector3 CamOffset = new Vector3(0,0,-1000000);
 
     // Update is called once per frame
     void Update()
     {
-        
+        CamOffset = new Vector3(0,0,-1000000) + targetObject.GetSpeed();
+        gameObject.transform.position = targetObject.transform.position + CamOffset;
     }
 }
