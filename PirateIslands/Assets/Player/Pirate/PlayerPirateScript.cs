@@ -9,7 +9,6 @@ public class PlayerPirateScript : GenericPlayerInterface
     Vector3 downMove = new Vector3(0, -1, 0);
     Vector3 upMove = new Vector3(0, 1, 0);
 
-    Vector3 desiredDirection = new Vector3();
     float speedMultiplier = 0.005f;
 
     // Start is called before the first frame update
@@ -32,6 +31,7 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     Vector3 GetDesiredDirection()
     {
+        Vector3 desiredDirection = new Vector3();
         desiredDirection += (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) * rightMove;
         desiredDirection += (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0) * leftMove;
         desiredDirection += (Input.GetKey(KeyCode.DownArrow) ? 1 : 0) * downMove;
