@@ -10,6 +10,7 @@ public class PlayerMonster : MonoBehaviour
     Vector3 leftMove = new Vector3(-1, 0, 0);
     Vector3 downMove = new Vector3(0, -1, 0);
     Vector3 upMove = new Vector3(0, 1, 0);
+    Vector3 desiredDirection = new Vector3();
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class PlayerMonster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 desiredDirection = new Vector3();
+        desiredDirection = new Vector3();
         desiredDirection += (Input.GetKey(KeyCode.D) ? 1 : 0) * rightMove;
         desiredDirection += (Input.GetKey(KeyCode.A) ? 1 : 0) * leftMove;
         desiredDirection += (Input.GetKey(KeyCode.S) ? 1 : 0) * downMove;
