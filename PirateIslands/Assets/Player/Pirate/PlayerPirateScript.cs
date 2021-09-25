@@ -30,6 +30,8 @@ public class PlayerPirateScript : GenericPlayerInterface
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
         if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;
 
+        
+
         //Checking for tree collision
         IsTouchingTree();
     }
@@ -70,4 +72,16 @@ public class PlayerPirateScript : GenericPlayerInterface
         return null;
     }
 
+    private Island IsOnIsland()
+    {
+        foreach (Tree item in Tree.All)
+        {
+            // if (){
+
+            //     return ;
+            // }
+        }
+        
+        return null;
+    }
 }
