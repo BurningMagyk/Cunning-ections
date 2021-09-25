@@ -22,10 +22,10 @@ public class Tile : MonoBehaviour
         island.AddTile(this);
 
         Transform tra = GetComponent<Transform>();
-        left = tra.localPosition.x - (tra.localScale.x / 2);
-        right = tra.localPosition.x + (tra.localScale.x / 2);
-        up = tra.localPosition.y + (tra.localScale.y / 2);
-        down = tra.localPosition.y - (tra.localScale.y / 2);
+        left = tra.position.x - (tra.lossyScale.x / 2);
+        right = tra.position.x + (tra.lossyScale.x / 2);
+        up = tra.position.y + (tra.lossyScale.y / 2);
+        down = tra.position.y - (tra.lossyScale.y / 2);
     }
 
     public void BecomeBridge()
@@ -37,13 +37,12 @@ public class Tile : MonoBehaviour
         if (isTree) tileType = Type.LAND;
     }
 
-    public bool IsInside(GenericPlayerInterface player)
+    public bool IsInside(Vector3 newPos, Vector3 lossyScale)
     {
-        Transform tra = player.gameObject.GetComponent<Transform>();
-        float left = tra.localPosition.x - (tra.localScale.x / 2);
-        float right = tra.localPosition.x + (tra.localScale.x / 2);
-        float up = tra.localPosition.y + (tra.localScale.y / 2);
-        float down = tra.localPosition.y - (tra.localScale.y / 2);
+        float left = newPos.x - (lossyScale.x / 2);
+        float right = newPos.x + (lossyScale.x / 2);
+        float up = newPos.y + (lossyScale.y / 2);
+        float down = newPos.y - (lossyScale.y / 2);
 
         if (left < this.right && right > this.left
             && up > this.down && down < this.up) return true;

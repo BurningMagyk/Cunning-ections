@@ -11,18 +11,22 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     float speedMultiplier = 0.005f;
 
+    private Vector3 lossyScale;
+
+    [SerializeField]
     private Island currentIsland;
 
     // Start is called before the first frame update
     void Start()
     {
-   
+        lossyScale = GetComponent<Transform>().lossyScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Transform>().localPosition += GetDesiredDirection() * speedMultiplier;
+        Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
+        if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;
     }
     
     // used for the camera
@@ -44,6 +48,7 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     private bool CanMove(Vector3 newPos)
     {
-        return currentIsland.CanMove(this);
+        if (currentIsland == null) return true;
+        return currentIsland.CanMove(this, newPos, lossyScale);
     }
 }

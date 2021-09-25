@@ -34,10 +34,10 @@ public class PlayerMonster : GenericPlayerInterface
         GetComponent<Transform>().localPosition += desiredDirection;
     }
 
-    private bool CanMove(Vector3 newPos)
-    {
-        return currentIsland.CanMove(this);
-    }
+    // private bool CanMove(Vector3 newPos)
+    // {
+    //     return currentIsland.CanMove(this);
+    // }
     
     // used for the camera
     public override Vector3 GetSpeed(){
