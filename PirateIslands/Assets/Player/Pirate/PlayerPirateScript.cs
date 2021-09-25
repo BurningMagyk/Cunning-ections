@@ -29,6 +29,9 @@ public class PlayerPirateScript : GenericPlayerInterface
     {
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
         if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;
+
+        //Checking for tree collision
+        IsTouchingTree();
     }
     
     // used for the camera
@@ -52,5 +55,19 @@ public class PlayerPirateScript : GenericPlayerInterface
     {
         if (currentIsland == null) return true;
         return currentIsland.CanMove(this, newPos, lossyScale);
+    }
+
+    private Tree IsTouchingTree()
+    {
+        foreach (Tree item in Tree.All)
+        {
+            if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
+
+                Debug.Log("I am colliding!");
+                return item;
+            }
+        }
+        
+        return null;
     }
 }
