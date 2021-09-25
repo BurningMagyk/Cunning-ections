@@ -63,7 +63,6 @@ public class PlayerPirateScript : GenericPlayerInterface
         {
             if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
 
-                Debug.Log("I am colliding!");
                 return item;
             }
         }
