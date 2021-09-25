@@ -18,23 +18,13 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 currentPosition = GetComponent<Transform>().localPosition;
         Vector3 desiredDirection = new Vector3();
+        desiredDirection += (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) * rightMove;
+        desiredDirection += (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0) * leftMove;
+        desiredDirection += (Input.GetKey(KeyCode.DownArrow) ? 1 : 0) * downMove;
+        desiredDirection += (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) * upMove;
+        desiredDirection = desiredDirection.normalized;
 
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            desiredDirection += rightMove;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            desiredDirection += leftMove;
-        }
-        if (Input.GetKey(KeyCode.DownArrow)) {
-            desiredDirection += downMove;
-        }
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            desiredDirection += upMove;
-        }
-
-        GetComponent<Transform>().localPosition += desiredDirection.normalized * 0.001f;
-
+        GetComponent<Transform>().localPosition += desiredDirection * 0.005f;
     }
 }
