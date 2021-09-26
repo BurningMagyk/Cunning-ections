@@ -18,7 +18,7 @@ public class PlayerPirateScript : GenericPlayerInterface
     [SerializeField]
     private BridgeScript currentBridge;
     [SerializeField]
-    private GameObject ui_c;
+    private GameObject ui_c, ui_v;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,19 @@ public class PlayerPirateScript : GenericPlayerInterface
             }
             
         }
+
+        // Check for entering bridge
+        BridgeScript newBridge = IsTouchingBridge();
+        if (newBridge != null)
+        {
+            newBridge.Show();
+            if (currentBridge != newBridge)
+            {
+                currentBridge = newBridge;
+                Debug.Log("Entered " + newBridge.gameObject.name);
+            }
+            if (Input.GetKeyDown(KeyCode.V)) newBridge.Build();
+        }
     }
     
     // used for the camera
@@ -72,8 +85,11 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     private bool CanMove(Vector3 newPos)
     {
-        if (currentIsland == null) return true;
-        return currentIsland.CanMove(this, newPos, lossyScale);
+        if (currentIsland != null && currentIsland.CanMove(this, newPos, lossyScale))
+            return true;
+        else if (currentBridge != null && currentBridge.CanMove(this, newPos, lossyScale))
+            return true;
+        return false;
     }
 
     private TreeScript IsTouchingTree()
@@ -91,6 +107,23 @@ public class PlayerPirateScript : GenericPlayerInterface
         }
         
         ui_c.SetActive(false);
+        return null;
+    }
+
+    private BridgeScript IsTouchingBridge()
+    {
+        foreach (BridgeScript item in BridgeScript.All)
+        {
+            BoxCollider2D bridgeBoxCollider = item.GetComponent<BoxCollider2D>();
+            if (GetComponent<BoxCollider2D>().bounds.Intersects(bridgeBoxCollider.bounds)){
+                
+                ui_v.SetActive(true);
+
+                return item;
+            }
+        }
+        
+        ui_v.SetActive(false);
         return null;
     }
 

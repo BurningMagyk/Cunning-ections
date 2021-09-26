@@ -38,7 +38,7 @@ public class TreeScript : MonoBehaviour
 
     public void Timber()
     {
-        foreach (Tile tile in woodTiles) { tile.tileType = Tile.Type.LAND; }
+        foreach (Tile tile in woodTiles) { tile.Timber(); }
         spriteChild.enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
 
