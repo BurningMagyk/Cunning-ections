@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     private IslandScript island;
 
     [SerializeField]
-    private Type tileType;
+    public Type tileType;
 
     [SerializeField]
     bool becomesBridge, isTree, isDock;

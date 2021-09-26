@@ -33,14 +33,23 @@ public class PlayerPirateScript : GenericPlayerInterface
         if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;        
 
         //Checking for tree collision
-        IsTouchingTree();
+        TreeScript tree = IsTouchingTree();
+        if (tree != null)
+        {
+            tree.ShowHalo();
+            if (Input.GetKeyDown(KeyCode.C)) tree.Timber();
+        }
 
         // Check for entering island
         IslandScript newIsland = IsOnIsland();
         if (newIsland != null)
         {
-            currentIsland = newIsland;
-            Debug.Log("Entered " + newIsland.gameObject.name);
+            if (currentIsland != newIsland)
+            {
+                currentIsland = newIsland;
+                Debug.Log("Entered " + newIsland.gameObject.name);
+            }
+            
         }
     }
     
@@ -85,11 +94,10 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     private IslandScript IsOnIsland()
     {
-        Transform tra = GetComponent<Transform>();
-        Vector3 pos = tra.localPosition;
+        Bounds bounds = GetComponent<BoxCollider2D>().bounds;
         foreach (IslandScript item in IslandScript.All)
         {
-            if (item.IsInside(pos, lossyScale))
+            if (item.IsInside(bounds))
             {
                 return item;
             }

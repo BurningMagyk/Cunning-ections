@@ -5,6 +5,7 @@ using UnityEngine;
 public class IslandScript : MonoBehaviour
 {
     List<Tile> tiles = new List<Tile>();
+    Bounds bounds;
 
     public void AddTile(Tile tile)
     {
@@ -36,6 +37,10 @@ public class IslandScript : MonoBehaviour
 
         return false;
     }
+    public bool IsInside(Bounds bounds)
+    {
+        return bounds.Intersects(this.bounds);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +60,8 @@ public class IslandScript : MonoBehaviour
         right = tra.position.x + (tra.lossyScale.x / 2);
         up = tra.position.y + (tra.lossyScale.y / 2);
         down = tra.position.y - (tra.lossyScale.y / 2);
+
+        bounds = GetComponent<BoxCollider2D>().bounds;
     }
 
     // Update is called once per frame

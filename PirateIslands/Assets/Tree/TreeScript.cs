@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TreeScript : MonoBehaviour
 {
+    [SerializeField]
+    private Tile[] woodTiles;
+    [SerializeField]
+    private SpriteRenderer spriteChild, spriteHalo;
     public static TreeScript[] All;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,17 @@ public class TreeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        spriteHalo.enabled = false;
+    }
+
+    public void ShowHalo()
+    {
+        spriteHalo.enabled = spriteChild.enabled;
+    }
+
+    public void Timber()
+    {
+        foreach (Tile tile in woodTiles) { tile.tileType = Tile.Type.LAND; }
+        spriteChild.enabled = false;
     }
 }
