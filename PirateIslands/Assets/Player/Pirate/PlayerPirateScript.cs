@@ -17,6 +17,8 @@ public class PlayerPirateScript : GenericPlayerInterface
     private Island currentIsland;
     [SerializeField]
     private Bridge currentBridge;
+    [SerializeField]
+    private GameObject ui_c;
 
     // Start is called before the first frame update
     void Start()
@@ -64,11 +66,14 @@ public class PlayerPirateScript : GenericPlayerInterface
         foreach (Tree item in Tree.All)
         {
             if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
+                
+                ui_c.SetActive(true);
 
                 return item;
             }
         }
         
+        ui_c.SetActive(false);
         return null;
     }
 

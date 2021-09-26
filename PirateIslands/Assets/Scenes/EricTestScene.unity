@@ -1064,6 +1064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPirate
       objectReference: {fileID: 0}
+    - target: {fileID: 5147003487626373745, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
+      propertyPath: ui_c
+      value: 
+      objectReference: {fileID: 1187254495}
     - target: {fileID: 5147003487626373747, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_RootOrder
       value: 2
