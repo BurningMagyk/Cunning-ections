@@ -3442,6 +3442,10 @@ PrefabInstance:
       propertyPath: speedMultiplier
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 5766183931858003584, guid: 6dd82baccb46b32418b92c441e1756f2, type: 3}
+      propertyPath: speedMultiplierOrig
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 5766183931858003587, guid: 6dd82baccb46b32418b92c441e1756f2, type: 3}
       propertyPath: m_RootOrder
       value: 56
@@ -4355,11 +4359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5147003487626373747, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.6
+      value: 61.17
       objectReference: {fileID: 0}
     - target: {fileID: 5147003487626373747, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.36
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: 5147003487626373747, guid: b513b432fb220f145b67aec4bbe91f2d, type: 3}
       propertyPath: m_LocalPosition.z

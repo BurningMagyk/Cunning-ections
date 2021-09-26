@@ -16,6 +16,7 @@ public class PlayerMonster : GenericPlayerInterface
 
     [SerializeField]
     private BridgeScript currentBridge;
+    [SerializeField]
     private IslandScript currentIsland;
     [SerializeField]
     private float speedMultiplierOrig = 0.005f;
@@ -37,13 +38,14 @@ public class PlayerMonster : GenericPlayerInterface
         Vector3 newPosition = GetComponent<Transform>().localPosition += GetDesiredDirection() * speedMultiplier * playerSpeed;
 
         int canMove = CanMove(newPosition);
-        if (canMove == 1)
+        if (canMove == 0)
         {
             speedMultiplier = speedMultiplierOrig;
             GetComponent<Transform>().localPosition = newPosition;
         }
         else if (canMove == 2)
         {
+            
             speedMultiplier = speedMultiplierOrig / 4;
             GetComponent<Transform>().localPosition = newPosition;
         }
@@ -72,6 +74,7 @@ public class PlayerMonster : GenericPlayerInterface
             }
             
         }
+        else currentIsland = null;
 
         // Check for entering bridge
         BridgeScript newBridge = IsTouchingBridge();
