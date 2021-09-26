@@ -7,6 +7,10 @@ public class SquashStretch : MonoBehaviour
 
     private SpriteRenderer spriteR;
     private Sprite[] sprites;
+    private Sprite[] idleSprites;
+    private Sprite[] walkSprites;
+    private Sprite[] winSprites;
+    private Sprite[] dedSprites;
     public int spriteIndex;
     //string spriteName = ;
     float timer = 0f;
@@ -23,13 +27,26 @@ public class SquashStretch : MonoBehaviour
     [Header("Sound Stuff")]
     public bool stepSound = true;
     AudioSource audioData;
+    [Header("Sprite Info")]
+    public bool idle = true;
+    public string PlayerState = "IDLE";
+    public Texture idleAnim;
+    public Texture walkAnim;
+    public Texture winAnim;
+    public Texture dedAnim;
+
+    public bool hasWon = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
-        sprites = Resources.LoadAll<Sprite>(spriteR.sprite.texture.name);
+        idleSprites = Resources.LoadAll<Sprite>(idleAnim.name);//spriteR.sprite.texture.name);
+        walkSprites = Resources.LoadAll<Sprite>(walkAnim.name);//spriteR.sprite.texture.name);
+        winSprites = Resources.LoadAll<Sprite>(winAnim.name);//spriteR.sprite.texture.name);
+        dedSprites = Resources.LoadAll<Sprite>(dedAnim.name);//spriteR.sprite.texture.name);
+        sprites = idleSprites;
     }
 
     void Squetch(){
@@ -45,6 +62,34 @@ public class SquashStretch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hasWon){
+            sprites = winSprites;
+        } else {
+            switch(PlayerState){
+                case "IDLE":
+                    sprites = idleSprites;
+                break;
+                case "WALK":
+                    sprites = walkSprites;
+                break;
+                case "WIN":
+                    sprites = winSprites;
+                    hasWon = true;
+                break;
+                case "DEAD":
+                    sprites = dedSprites;
+                break;
+                default:
+                break;
+            }
+        }
+        
+        /*
+        if (idle){ // change animation
+            sprites = idleSprites;
+        } else {
+            sprites = walkSprites;
+        }*/
         timer += Time.deltaTime * animSpeed;
         if (squetchCurrentTime<1f){
             squetchCurrentTime += Time.deltaTime * animSpeed / squetchTime;

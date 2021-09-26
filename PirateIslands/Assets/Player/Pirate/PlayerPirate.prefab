@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2952088508973329264, guid: 73cff5a39c8c3e14d9630c237daf111d, type: 3}
+  m_Sprite: {fileID: 1240413156950198499, guid: 86cdf29ecb78cbb49b64659c05d8d7ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,6 +114,12 @@ MonoBehaviour:
   squetchAmount: 0.1
   squetchTime: 0.2
   stepSound: 1
+  idle: 1
+  PlayerState: IDLE
+  idleAnim: {fileID: 2800000, guid: 86cdf29ecb78cbb49b64659c05d8d7ae, type: 3}
+  walkAnim: {fileID: 2800000, guid: 73cff5a39c8c3e14d9630c237daf111d, type: 3}
+  winAnim: {fileID: 2800000, guid: 7da5bd519d8bf964fb9eb332625c9583, type: 3}
+  dedAnim: {fileID: 2800000, guid: 2866dee6c1a47014492eb3a36c09b5e6, type: 3}
 --- !u!82 &6865131510110857616
 AudioSource:
   m_ObjectHideFlags: 0
@@ -260,6 +266,7 @@ MonoBehaviour:
   currentBridge: {fileID: 0}
   ui_c: {fileID: 0}
   ui_v: {fileID: 0}
+  woodCollect: {fileID: 0}
 --- !u!61 &-3766548707296249882
 BoxCollider2D:
   m_ObjectHideFlags: 0

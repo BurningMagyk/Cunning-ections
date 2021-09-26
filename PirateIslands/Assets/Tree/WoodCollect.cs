@@ -23,7 +23,7 @@ public class WoodCollect : MonoBehaviour
     void Start()
     {
         dynamicImgEnd = new Vector2(
-            stillImg.GetComponent<RectTransform>().anchoredPosition.x + cam.pixelWidth,
+            stillImg.GetComponent<RectTransform>().anchoredPosition.x,
             stillImg.GetComponent<RectTransform>().anchoredPosition.y + cam.pixelHeight);
     }
 
@@ -54,10 +54,17 @@ public class WoodCollect : MonoBehaviour
         Vector3 targetPos = cam.WorldToScreenPoint(target.position);
 
         dynamicImgStart = new Vector2(targetPos.x, targetPos.y);
-        Debug.Log(dynamicImgStart);
         dynamicImg.GetComponent<RectTransform>().anchoredPosition
             = new Vector2(targetPos.x, targetPos.y);
 
         dynamicImg.gameObject.SetActive(true);
+    }
+
+    public bool Decrement()
+    {
+        if (woodInInventory <= 0) return false;
+        woodInInventory--;
+        woodText.text = "" + woodInInventory;
+        return true;
     }
 }
