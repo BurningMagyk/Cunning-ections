@@ -191,4 +191,9 @@ public class PlayerPirateScript : GenericPlayerInterface
         
         return null;
     }
+
+    public void Victory()
+    {
+        
+    }
 }

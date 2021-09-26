@@ -66,7 +66,14 @@ public class Tile : MonoBehaviour
                 return 0;
             return 1;
         }
-        if (tileType == Type.TREASURE) return 0;
+        if (tileType == Type.TREASURE)
+        {
+            if (player.gameObject.GetComponent<PlayerPirateScript>() != null)
+            {
+                player.gameObject.GetComponent<PlayerPirateScript>().Victory();
+            }
+            return 0;
+        }
         if (tileType == Type.WATER)
         {
             if (player.gameObject.GetComponent<PlayerPirateScript>() != null)
