@@ -67,6 +67,8 @@ public class SquashStretch : MonoBehaviour
     {
         if (hasWon){
             sprites = winSprites;
+        } else if (hasLost) {
+            sprites = dedSprites;
         } else {
             switch(PlayerState){
                 case "IDLE":
