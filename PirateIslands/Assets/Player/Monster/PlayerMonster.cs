@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMonster : GenericPlayerInterface
 {
-    [Range(5.0f,20.0f)]
+    [Range(1.0f,10.0f)]
     public float playerSpeed = 10.0f;
     Vector3 rightMove = new Vector3(1, 0, 0);
     Vector3 leftMove = new Vector3(-1, 0, 0);
@@ -14,7 +14,7 @@ public class PlayerMonster : GenericPlayerInterface
 
     private Vector3 lossyScale;
     private IslandScript currentIsland;
-    float speedMultiplier = 0.005f;
+    public float speedMultiplier = 0.005f;
 
     // Start is called before the first frame update
     void Start()
