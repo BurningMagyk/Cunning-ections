@@ -26,7 +26,12 @@ public class PlayerMonster : GenericPlayerInterface
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Transform>().localPosition += GetDesiredDirection() * speedMultiplier;
+        GetComponent<Transform>().localPosition += GetDesiredDirection() * speedMultiplier * playerSpeed;
+        if (GetDesiredDirection().x < 0){
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        } else if(GetDesiredDirection().x > 0) {
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
     }
 
     // private bool CanMove(Vector3 newPos)
