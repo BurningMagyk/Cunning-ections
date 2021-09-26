@@ -79,6 +79,13 @@ public class PlayerPirateScript : GenericPlayerInterface
             }
             if (Input.GetKeyDown(KeyCode.V)) newBridge.Build();
         }
+
+        // handle sprite flipping
+        if (GetDesiredDirection().x < 0){
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        } else if(GetDesiredDirection().x > 0) {
+            gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
     }
     
     // used for the camera
