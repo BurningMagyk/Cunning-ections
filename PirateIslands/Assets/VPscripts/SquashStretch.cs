@@ -21,6 +21,9 @@ public class SquashStretch : MonoBehaviour
     float squetchCurrentTime = 0f;
     float squetchX = 0f;
     float squetchY = 0f;
+    [Header("Sound Stuff")]
+    public bool stepSound = true;
+    AudioSource audioData;
 
 
     // Start is called before the first frame update
@@ -34,6 +37,9 @@ public class SquashStretch : MonoBehaviour
         // start squetch time
         squetchCurrentTime = 0f;
         //Debug.Log("squetch was called");
+        audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
+        
     }
 
     // Update is called once per frame
