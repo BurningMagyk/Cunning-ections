@@ -23,7 +23,7 @@ public class WoodCollect : MonoBehaviour
     void Start()
     {
         dynamicImgEnd = new Vector2(
-            stillImg.GetComponent<RectTransform>().anchoredPosition.x + cam.pixelWidth,
+            stillImg.GetComponent<RectTransform>().anchoredPosition.x,
             stillImg.GetComponent<RectTransform>().anchoredPosition.y + cam.pixelHeight);
     }
 

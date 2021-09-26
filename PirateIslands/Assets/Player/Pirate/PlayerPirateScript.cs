@@ -88,6 +88,7 @@ public class PlayerPirateScript : GenericPlayerInterface
                 if (woodCollect.Decrement()) newBridge.Build();
             }
         }
+        else currentBridge = null;
 
         // handle sprite flipping
         if (GetDesiredDirection().x < 0){

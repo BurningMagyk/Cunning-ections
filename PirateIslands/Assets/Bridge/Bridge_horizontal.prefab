@@ -246,6 +246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6782138695362589712}
     m_Modifications:
+    - target: {fileID: 695754401898268063, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1002074155186707351, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
       propertyPath: m_Name
       value: Tile
@@ -268,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8420027136394513543, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8420027136394513543, guid: 916ff2f9e13265640b9cdded0c10c6ac, type: 3}
       propertyPath: m_LocalScale.y

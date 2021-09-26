@@ -23,6 +23,8 @@ public class TreeScript : MonoBehaviour
                 All[i] = objs[i].GetComponent<TreeScript>();
             }
         }
+
+        woodCollect = GameObject.Find("UI").GetComponent<WoodCollect>();
     }
 
     // Update is called once per frame
