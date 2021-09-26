@@ -9,7 +9,9 @@ public class PlayerPirateScript : GenericPlayerInterface
     Vector3 downMove = new Vector3(0, -1, 0);
     Vector3 upMove = new Vector3(0, 1, 0);
 
-    float speedMultiplier = 0.005f;
+    [SerializeField]
+    private float speedMultiplierOrig = 0.005f;
+    private float speedMultiplier;
 
     private Vector3 lossyScale;
 
@@ -24,13 +26,26 @@ public class PlayerPirateScript : GenericPlayerInterface
     void Start()
     {
         lossyScale = GetComponent<Transform>().lossyScale;
+
+        speedMultiplier = speedMultiplierOrig;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
-        if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;        
+        
+        int canMove = CanMove(newPosition);
+        if (canMove == 1)
+        {
+            speedMultiplier = speedMultiplierOrig;
+            GetComponent<Transform>().localPosition = newPosition;
+        }
+        else if (canMove == 2)
+        {
+            speedMultiplier = speedMultiplierOrig / 4;
+            GetComponent<Transform>().localPosition = newPosition;
+        }      
 
         //Checking for tree collision
         TreeScript tree = IsTouchingTree();
@@ -83,13 +98,25 @@ public class PlayerPirateScript : GenericPlayerInterface
         return desiredDirection;
     }
 
-    private bool CanMove(Vector3 newPos)
+    private int CanMove(Vector3 newPos)
     {
-        if (currentIsland != null && currentIsland.CanMove(this, newPos, lossyScale))
-            return true;
-        else if (currentBridge != null && currentBridge.CanMove(this, newPos, lossyScale))
-            return true;
-        return false;
+        int islandMove = 0, bridgeMove = 0;
+
+        if (currentIsland != null)
+        {
+            islandMove = currentIsland.CanMove(this, newPos, lossyScale);
+            if (islandMove == 1) return 1;
+        }
+        else if (currentBridge != null)
+        {
+            bridgeMove = currentBridge.CanMove(this, newPos, lossyScale);
+            if (bridgeMove == 1) return 1;
+        }
+        
+        if (currentIsland != null && islandMove == 2) return 2;
+        if (currentBridge != null && bridgeMove == 2) return 2;
+        
+        return 0;
     }
 
     private TreeScript IsTouchingTree()

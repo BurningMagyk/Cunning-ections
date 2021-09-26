@@ -50,15 +50,29 @@ public class Tile : MonoBehaviour
         return false;
     }
 
-    public bool CanMoveHere(GenericPlayerInterface player)
+    // Return 0 - can't move, 1 - can move, 2 - can move but with reduced speed
+    public int CanMoveHere(GenericPlayerInterface player)
     {
         if (tileType == Type.WOOD)
         {
-            if (!becomesBridge) return false;
+            if (!becomesBridge) return 0;
             else if (player.gameObject.GetComponent<PlayerMonster>() != null)
-                return false;
+                return 0;
         }
-        if (tileType == Type.TREASURE) return false;
-        return true;
+        if (tileType == Type.TREASURE) return 0;
+        if (tileType == Type.WATER)
+        {
+            if (player.gameObject.GetComponent<PlayerPirateScript>() != null)
+                return 2;
+        }
+
+        if (tileType == Type.LAND)
+        {
+            if (player.gameObject.GetComponent<PlayerMonster>() != null)
+                return 0;
+            else return 1;
+        }
+
+        return 2;
     }
 }

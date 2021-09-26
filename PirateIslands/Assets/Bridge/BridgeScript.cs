@@ -13,17 +13,23 @@ public class BridgeScript : MonoBehaviour
     {
         tiles.Add(tile);
     }
-    public bool CanMove(GenericPlayerInterface player,
+    public int CanMove(GenericPlayerInterface player,
         Vector3 newPos, Vector3 lossyScale)
     {
+        bool withSlowTile = false, withFastTile = false;
+
         foreach (Tile tile in tiles)
         {
             if (tile.IsInside(newPos, lossyScale))
             {
-                if (!tile.CanMoveHere(player)) return false;
+                if (tile.CanMoveHere(player) == 0) return 0;
+                if (tile.CanMoveHere(player) == 1) withFastTile = true;
+                if (tile.CanMoveHere(player) == 2) withSlowTile = true;
             }
         }
-        return true;
+
+        if (withSlowTile || !withFastTile) return 2;
+        return 1;
     }
 
     // Start is called before the first frame update
