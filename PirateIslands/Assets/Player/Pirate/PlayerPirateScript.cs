@@ -194,6 +194,6 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     public void Victory()
     {
-        
+        PlayerStateHandle("WIN");
     }
 }

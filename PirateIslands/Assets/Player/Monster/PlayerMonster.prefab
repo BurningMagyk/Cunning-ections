@@ -103,8 +103,11 @@ MonoBehaviour:
   squetchTime: 0.5
   stepSound: 1
   idle: 1
+  PlayerState: IDLE
   idleAnim: {fileID: 2800000, guid: 729e620a23a45aa46898acacdba266fe, type: 3}
   walkAnim: {fileID: 2800000, guid: 00f735ad0cb0cd546a4972569bb71cc6, type: 3}
+  winAnim: {fileID: 2800000, guid: 235ab8da83bbbd24ca111c898dc2dceb, type: 3}
+  dedAnim: {fileID: 2800000, guid: e0ff9285f6a4ecb4f96be54b4cea91c1, type: 3}
 --- !u!114 &5469833177483503887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 12.9
+  currentBridge: {fileID: 0}
+  speedMultiplierOrig: 0.005
+  speedMultiplier: 0.005
