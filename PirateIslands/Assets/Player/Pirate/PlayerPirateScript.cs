@@ -32,8 +32,8 @@ public class PlayerPirateScript : GenericPlayerInterface
         speedMultiplier = speedMultiplierOrig;
     }
     
-    void IdleHandle(bool isIdle){
-        gameObject.GetComponentInChildren<SquashStretch>().idle = isIdle;
+    void PlayerStateHandle(string state){ // IDLE, WALK, WIN, DEAD
+        gameObject.GetComponentInChildren<SquashStretch>().PlayerState = state;
     }
 
     // Update is called once per frame
@@ -98,9 +98,9 @@ public class PlayerPirateScript : GenericPlayerInterface
         } 
 
         if (GetDesiredDirection().x == 0 && GetDesiredDirection().y == 0){
-            IdleHandle(true);
+            PlayerStateHandle("IDLE");
         } else {
-            IdleHandle(false);
+            PlayerStateHandle("WALK");
         }
     }
     
