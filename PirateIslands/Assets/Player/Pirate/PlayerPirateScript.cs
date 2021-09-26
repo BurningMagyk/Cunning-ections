@@ -23,6 +23,8 @@ public class PlayerPirateScript : GenericPlayerInterface
     private GameObject ui_c, ui_v;
     [SerializeField]
     private WoodCollect woodCollect;
+    [SerializeField]
+    private PlayerMonster monster;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,10 @@ public class PlayerPirateScript : GenericPlayerInterface
     // Update is called once per frame
     void Update()
     {
+        // Check if killed by monster
+        if (GetComponent<BoxCollider2D>().bounds.Intersects(monster.GetComponent<BoxCollider2D>().bounds))
+            Loss();
+
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
         
         int canMove = CanMove(newPosition);
@@ -194,6 +200,12 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     public void Victory()
     {
+        gameObject.GetComponentInChildren<SquashStretch>().Victory();
         PlayerStateHandle("WIN");
+    }
+    public void Loss()
+    {
+        gameObject.GetComponentInChildren<SquashStretch>().Loss();
+        PlayerStateHandle("LOSE");
     }
 }

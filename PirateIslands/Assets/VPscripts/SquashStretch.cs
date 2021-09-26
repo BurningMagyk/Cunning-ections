@@ -35,7 +35,7 @@ public class SquashStretch : MonoBehaviour
     public Texture winAnim;
     public Texture dedAnim;
 
-    public bool hasWon = false;
+    public bool hasWon = false, hasLost = false;
 
 
     // Start is called before the first frame update
@@ -59,6 +59,9 @@ public class SquashStretch : MonoBehaviour
         }
     }
 
+    public void Victory() { hasWon = true; }
+    public void Loss() { hasLost = true; }
+
     // Update is called once per frame
     void Update()
     {
@@ -74,7 +77,6 @@ public class SquashStretch : MonoBehaviour
                 break;
                 case "WIN":
                     sprites = winSprites;
-                    hasWon = true;
                 break;
                 case "DEAD":
                     sprites = dedSprites;
