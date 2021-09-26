@@ -61,9 +61,9 @@ public class PlayerPirateScript : GenericPlayerInterface
         return currentIsland.CanMove(this, newPos, lossyScale);
     }
 
-    private Tree IsTouchingTree()
+    private TreeScript IsTouchingTree()
     {
-        foreach (Tree item in Tree.All)
+        foreach (TreeScript item in TreeScript.All)
         {
             if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
                 
@@ -79,7 +79,7 @@ public class PlayerPirateScript : GenericPlayerInterface
 
     private Island IsOnIsland()
     {
-        foreach (Tree item in Tree.All)
+        foreach (TreeScript item in TreeScript.All)
         {
             // if (){
 
