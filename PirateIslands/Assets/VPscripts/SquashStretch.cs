@@ -37,9 +37,10 @@ public class SquashStretch : MonoBehaviour
         // start squetch time
         squetchCurrentTime = 0f;
         //Debug.Log("squetch was called");
-        audioData = GetComponent<AudioSource>();
-        audioData.Play(0);
-        
+        if (stepSound) {
+            audioData = GetComponent<AudioSource>();
+            audioData.Play(0);
+        }
     }
 
     // Update is called once per frame
