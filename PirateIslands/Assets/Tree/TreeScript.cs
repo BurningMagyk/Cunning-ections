@@ -8,6 +8,8 @@ public class TreeScript : MonoBehaviour
     private Tile[] woodTiles;
     [SerializeField]
     private SpriteRenderer spriteChild, spriteHalo;
+    [SerializeField]
+    private WoodCollect woodCollect;
     public static TreeScript[] All;
     // Start is called before the first frame update
     void Start()
@@ -38,5 +40,8 @@ public class TreeScript : MonoBehaviour
     {
         foreach (Tile tile in woodTiles) { tile.tileType = Tile.Type.LAND; }
         spriteChild.enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        woodCollect.SetIncrement(gameObject.GetComponent<Transform>());
     }
 }

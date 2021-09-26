@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca9f81efaccb2a478420cead867c21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  woodTiles: []
+  spriteChild: {fileID: 2052345560682418571}
+  spriteHalo: {fileID: 2989463003572065472}
+  woodCollect: {fileID: 0}
 --- !u!1 &3720955882449619012
 GameObject:
   m_ObjectHideFlags: 0

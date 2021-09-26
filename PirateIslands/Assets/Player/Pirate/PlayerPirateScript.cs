@@ -80,7 +80,9 @@ public class PlayerPirateScript : GenericPlayerInterface
     {
         foreach (TreeScript item in TreeScript.All)
         {
-            if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
+            BoxCollider2D treeBoxCollider = item.GetComponent<BoxCollider2D>();
+            if (treeBoxCollider.enabled
+                && GetComponent<BoxCollider2D>().bounds.Intersects(treeBoxCollider.bounds)){
                 
                 ui_c.SetActive(true);
 
