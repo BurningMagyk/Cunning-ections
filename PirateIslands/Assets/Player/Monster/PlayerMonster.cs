@@ -22,6 +22,9 @@ public class PlayerMonster : GenericPlayerInterface
         lossyScale = GetComponent<Transform>().lossyScale;
     }
 
+    void IdleHandle(bool isIdle){
+        gameObject.GetComponentInChildren<SquashStretch>().idle = isIdle;
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +34,15 @@ public class PlayerMonster : GenericPlayerInterface
             gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
         } else if(GetDesiredDirection().x > 0) {
             gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        } 
+
+        if (GetDesiredDirection().x == 0 && GetDesiredDirection().y == 0){
+            IdleHandle(true);
+        } else {
+            IdleHandle(false);
         }
+
+
     }
 
     // private bool CanMove(Vector3 newPos)

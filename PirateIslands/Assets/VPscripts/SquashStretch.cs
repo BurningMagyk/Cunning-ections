@@ -7,6 +7,8 @@ public class SquashStretch : MonoBehaviour
 
     private SpriteRenderer spriteR;
     private Sprite[] sprites;
+    private Sprite[] idleSprites;
+    private Sprite[] walkSprites;
     public int spriteIndex;
     //string spriteName = ;
     float timer = 0f;
@@ -23,13 +25,19 @@ public class SquashStretch : MonoBehaviour
     [Header("Sound Stuff")]
     public bool stepSound = true;
     AudioSource audioData;
+    [Header("Sprite Info")]
+    public bool idle = true;
+    public Texture idleAnim;
+    public Texture walkAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
-        sprites = Resources.LoadAll<Sprite>(spriteR.sprite.texture.name);
+        idleSprites = Resources.LoadAll<Sprite>(idleAnim.name);//spriteR.sprite.texture.name);
+        walkSprites = Resources.LoadAll<Sprite>(walkAnim.name);//spriteR.sprite.texture.name);
+        sprites = idleSprites;
     }
 
     void Squetch(){
@@ -45,6 +53,11 @@ public class SquashStretch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (idle){ // change animation
+            sprites = idleSprites;
+        } else {
+            sprites = walkSprites;
+        }
         timer += Time.deltaTime * animSpeed;
         if (squetchCurrentTime<1f){
             squetchCurrentTime += Time.deltaTime * animSpeed / squetchTime;

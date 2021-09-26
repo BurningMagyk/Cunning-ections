@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2753369016336956445, guid: 00f735ad0cb0cd546a4972569bb71cc6, type: 3}
+  m_Sprite: {fileID: -7706820328974340145, guid: 729e620a23a45aa46898acacdba266fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,9 @@ MonoBehaviour:
   squetchAmount: 0.1
   squetchTime: 0.5
   stepSound: 1
+  idle: 1
+  idleAnim: {fileID: 2800000, guid: 729e620a23a45aa46898acacdba266fe, type: 3}
+  walkAnim: {fileID: 2800000, guid: 00f735ad0cb0cd546a4972569bb71cc6, type: 3}
 --- !u!114 &5469833177483503887
 MonoBehaviour:
   m_ObjectHideFlags: 0

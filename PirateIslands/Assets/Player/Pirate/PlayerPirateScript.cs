@@ -29,6 +29,10 @@ public class PlayerPirateScript : GenericPlayerInterface
 
         speedMultiplier = speedMultiplierOrig;
     }
+    
+    void IdleHandle(bool isIdle){
+        gameObject.GetComponentInChildren<SquashStretch>().idle = isIdle;
+    }
 
     // Update is called once per frame
     void Update()
@@ -85,6 +89,12 @@ public class PlayerPirateScript : GenericPlayerInterface
             gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
         } else if(GetDesiredDirection().x > 0) {
             gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        } 
+
+        if (GetDesiredDirection().x == 0 && GetDesiredDirection().y == 0){
+            IdleHandle(true);
+        } else {
+            IdleHandle(false);
         }
     }
     
