@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Island : MonoBehaviour
+public class BridgeScript : MonoBehaviour
 {
     List<Tile> tiles = new List<Tile>();
 
@@ -22,7 +22,6 @@ public class Island : MonoBehaviour
         }
         return true;
     }
-
     float left, right, up, down;
     public bool IsInside(Vector3 newPos, Vector3 lossyScale)
     {
@@ -42,11 +41,11 @@ public class Island : MonoBehaviour
     {
         if (All == null)
         {
-            GameObject[] objs =  GameObject.FindGameObjectsWithTag("Island");
-            All = new Island[objs.Length];
+            GameObject[] objs =  GameObject.FindGameObjectsWithTag("Bridge");
+            All = new BridgeScript[objs.Length];
             for (int i = 0; i < objs.Length; i++)
             {
-                All[i] = objs[i].GetComponent<Island>();
+                All[i] = objs[i].GetComponent<BridgeScript>();
             }
         }
 
@@ -63,5 +62,5 @@ public class Island : MonoBehaviour
         
     }
 
-    public static Island[] All;
+    public static BridgeScript[] All;
 }

@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
     public enum Type { LAND, WATER, WOOD, TREASURE }
 
     [SerializeField]
-    private Island island;
+    private IslandScript island;
 
     [SerializeField]
     private Type tileType;

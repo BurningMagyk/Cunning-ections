@@ -13,7 +13,7 @@ public class PlayerMonster : GenericPlayerInterface
     Vector3 desiredDirection = new Vector3();
 
     private Vector3 lossyScale;
-    private Island currentIsland;
+    private IslandScript currentIsland;
     float speedMultiplier = 0.005f;
 
     // Start is called before the first frame update

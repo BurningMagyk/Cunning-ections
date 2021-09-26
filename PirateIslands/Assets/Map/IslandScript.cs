@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bridge : MonoBehaviour
+public class IslandScript : MonoBehaviour
 {
     List<Tile> tiles = new List<Tile>();
 
@@ -22,13 +22,14 @@ public class Bridge : MonoBehaviour
         }
         return true;
     }
+
     float left, right, up, down;
-    public bool IsInside(Vector3 newPos, Vector3 lossyScale)
+    public bool IsInside(Vector3 pos, Vector3 lossyScale)
     {
-        float left = newPos.x - (lossyScale.x / 2);
-        float right = newPos.x + (lossyScale.x / 2);
-        float up = newPos.y + (lossyScale.y / 2);
-        float down = newPos.y - (lossyScale.y / 2);
+        float left = pos.x - (lossyScale.x / 2);
+        float right = pos.x + (lossyScale.x / 2);
+        float up = pos.y + (lossyScale.y / 2);
+        float down = pos.y - (lossyScale.y / 2);
 
         if (left < this.right && right > this.left
             && up > this.down && down < this.up) return true;
@@ -41,11 +42,11 @@ public class Bridge : MonoBehaviour
     {
         if (All == null)
         {
-            GameObject[] objs =  GameObject.FindGameObjectsWithTag("Bridge");
-            All = new Bridge[objs.Length];
+            GameObject[] objs =  GameObject.FindGameObjectsWithTag("Island");
+            All = new IslandScript[objs.Length];
             for (int i = 0; i < objs.Length; i++)
             {
-                All[i] = objs[i].GetComponent<Bridge>();
+                All[i] = objs[i].GetComponent<IslandScript>();
             }
         }
 
@@ -62,5 +63,5 @@ public class Bridge : MonoBehaviour
         
     }
 
-    public static Bridge[] All;
+    public static IslandScript[] All;
 }

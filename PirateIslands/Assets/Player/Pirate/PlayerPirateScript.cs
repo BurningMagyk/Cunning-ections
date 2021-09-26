@@ -14,9 +14,9 @@ public class PlayerPirateScript : GenericPlayerInterface
     private Vector3 lossyScale;
 
     [SerializeField]
-    private Island currentIsland;
+    private IslandScript currentIsland;
     [SerializeField]
-    private Bridge currentBridge;
+    private BridgeScript currentBridge;
     [SerializeField]
     private GameObject ui_c;
 
@@ -30,12 +30,18 @@ public class PlayerPirateScript : GenericPlayerInterface
     void Update()
     {
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);
-        if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;
-
-        
+        if (CanMove(newPosition)) GetComponent<Transform>().localPosition = newPosition;        
 
         //Checking for tree collision
         IsTouchingTree();
+
+        // Check for entering island
+        IslandScript newIsland = IsOnIsland();
+        if (newIsland != null)
+        {
+            currentIsland = newIsland;
+            Debug.Log("Entered " + newIsland.gameObject.name);
+        }
     }
     
     // used for the camera
@@ -61,9 +67,9 @@ public class PlayerPirateScript : GenericPlayerInterface
         return currentIsland.CanMove(this, newPos, lossyScale);
     }
 
-    private Tree IsTouchingTree()
+    private TreeScript IsTouchingTree()
     {
-        foreach (Tree item in Tree.All)
+        foreach (TreeScript item in TreeScript.All)
         {
             if (GetComponent<BoxCollider2D>().bounds.Intersects(item.GetComponent<BoxCollider2D>().bounds)){
                 
@@ -77,14 +83,16 @@ public class PlayerPirateScript : GenericPlayerInterface
         return null;
     }
 
-    private Island IsOnIsland()
+    private IslandScript IsOnIsland()
     {
-        foreach (Tree item in Tree.All)
+        Transform tra = GetComponent<Transform>();
+        Vector3 pos = tra.localPosition;
+        foreach (IslandScript item in IslandScript.All)
         {
-            // if (){
-
-            //     return ;
-            // }
+            if (item.IsInside(pos, lossyScale))
+            {
+                return item;
+            }
         }
         
         return null;
