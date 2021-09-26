@@ -15,7 +15,6 @@ public class SquashStretch : MonoBehaviour
     int lastFrame = 0;
     [Range(0.01f,1f)]
     public float squetchAmount = 0.1f;
-    float squetchSlerp = 0f;
     [Range(0.0f,1.0f)]
     public float squetchTime = 0.5f;
     float squetchCurrentTime = 0f;
