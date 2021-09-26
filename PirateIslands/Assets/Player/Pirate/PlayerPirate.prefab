@@ -220,7 +220,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5147003487626373747}
   - component: {fileID: 5147003487626373745}
-  - component: {fileID: 7793454689677743063}
   - component: {fileID: -3766548707296249882}
   m_Layer: 0
   m_Name: PlayerPirate
@@ -261,18 +260,6 @@ MonoBehaviour:
   currentBridge: {fileID: 0}
   ui_c: {fileID: 0}
   ui_v: {fileID: 0}
---- !u!114 &7793454689677743063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5147003487626373744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bff26681802ad44862cf7e8bcc0ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-3766548707296249882
 BoxCollider2D:
   m_ObjectHideFlags: 0
