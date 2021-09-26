@@ -8,18 +8,24 @@ public class Tile : MonoBehaviour
 
     [SerializeField]
     private IslandScript island;
+    [SerializeField]
+    private BridgeScript bridge;
 
     [SerializeField]
     public Type tileType;
 
     [SerializeField]
-    bool becomesBridge, isTree, isDock;
+    bool isTree, isDock;
+    private bool becomesBridge;
 
     float left, right, up, down;
 
     private void Start()
     {
-        island.AddTile(this);
+        becomesBridge = (bridge != null);
+
+        if (island != null) island.AddTile(this);
+        if (becomesBridge) bridge.AddTile(this);
 
         Transform tra = GetComponent<Transform>();
         left = tra.position.x - (tra.lossyScale.x / 2);
@@ -58,6 +64,7 @@ public class Tile : MonoBehaviour
             if (!becomesBridge) return 0;
             else if (player.gameObject.GetComponent<PlayerMonster>() != null)
                 return 0;
+            return 1;
         }
         if (tileType == Type.TREASURE) return 0;
         if (tileType == Type.WATER)

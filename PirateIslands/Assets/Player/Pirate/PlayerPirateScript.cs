@@ -21,6 +21,8 @@ public class PlayerPirateScript : GenericPlayerInterface
     private BridgeScript currentBridge;
     [SerializeField]
     private GameObject ui_c, ui_v;
+    [SerializeField]
+    private WoodCollect woodCollect;
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +79,10 @@ public class PlayerPirateScript : GenericPlayerInterface
                 currentBridge = newBridge;
                 Debug.Log("Entered " + newBridge.gameObject.name);
             }
-            if (Input.GetKeyDown(KeyCode.V)) newBridge.Build();
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                if (woodCollect.Decrement()) newBridge.Build();
+            }
         }
 
         // handle sprite flipping
@@ -109,16 +114,17 @@ public class PlayerPirateScript : GenericPlayerInterface
     {
         int islandMove = 0, bridgeMove = 0;
 
-        if (currentIsland != null)
-        {
-            islandMove = currentIsland.CanMove(this, newPos, lossyScale);
-            if (islandMove == 1) return 1;
-        }
-        else if (currentBridge != null)
+        if (currentBridge != null)
         {
             bridgeMove = currentBridge.CanMove(this, newPos, lossyScale);
             if (bridgeMove == 1) return 1;
         }
+        else if (currentIsland != null)
+        {
+            islandMove = currentIsland.CanMove(this, newPos, lossyScale);
+            if (islandMove == 1) return 1;
+        }
+        
         
         if (currentIsland != null && islandMove == 2) return 2;
         if (currentBridge != null && bridgeMove == 2) return 2;
