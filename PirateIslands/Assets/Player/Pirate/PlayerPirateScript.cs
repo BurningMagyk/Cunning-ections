@@ -42,7 +42,7 @@ public class PlayerPirateScript : GenericPlayerInterface
     void Update()
     {
         // Check if killed by monster
-        if (GetComponent<BoxCollider2D>().bounds.Intersects(monster.GetComponent<BoxCollider2D>().bounds))
+        if (GetComponent<BoxCollider2D>().bounds.Intersects(monster.gameObject.GetComponent<BoxCollider2D>().bounds))
             Loss();
 
         Vector3 newPosition = GetComponent<Transform>().localPosition + (GetDesiredDirection() * speedMultiplier);

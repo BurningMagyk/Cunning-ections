@@ -38,7 +38,7 @@ public class PlayerMonster : GenericPlayerInterface
         Vector3 newPosition = GetComponent<Transform>().localPosition += GetDesiredDirection() * speedMultiplier * playerSpeed;
 
         int canMove = CanMove(newPosition);
-        if (canMove == 0)
+        if (canMove == 0 && currentIsland == null)
         {
             speedMultiplier = speedMultiplierOrig;
             GetComponent<Transform>().localPosition = newPosition;
